@@ -21,7 +21,7 @@ class LamaPlannerTest(unittest.TestCase):
         host, port = self._get_db_host_and_port()
         self.client = pm.MongoClient(host=host, port=port)
 
-        planner_config_params = get_planner_config('../config/planner_config.yaml')
+        planner_config_params = get_planner_config('../task_planner/config/planner_config.yaml')
         domain_file = planner_config_params['domain_file']
         planner_cmd = planner_config_params['planner_cmd']
         plan_file_path = planner_config_params['plan_file_path']
