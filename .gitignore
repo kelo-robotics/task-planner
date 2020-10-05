@@ -2,7 +2,7 @@
 *.egg-info
 
 # plan files
-config/plan_*
+task_planner/config/plan_*
 
 # problem files
-config/problem_*
+task_planner/config/problem_*
