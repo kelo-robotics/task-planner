@@ -7,7 +7,7 @@ import subprocess
 import numpy as np
 import logging
 
-from ropod.structs.action import Action
+from task_planner.action_models import Action
 from task_planner.planner_interface import TaskPlannerInterface
 from task_planner.knowledge_base_interface import Predicate
 from task_planner.action_models import ActionModelLibrary

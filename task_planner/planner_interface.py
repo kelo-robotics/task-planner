@@ -1,7 +1,7 @@
 from abc import abstractmethod
 from typing import Tuple
-from ropod.structs.task import TaskRequest
-from ropod.structs.action import Action
+from fmlib.models.requests import TransportationRequest as TaskRequest
+from task_planner.action_models import Action
 from task_planner.knowledge_base_interface import KnowledgeBaseInterface
 
 

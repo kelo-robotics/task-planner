@@ -36,7 +36,7 @@ Note: The package is developed for Python 3.5+ since it makes use of Python typi
 * `pymongo`
 * `numpy`
 * `PyYAML`
-* [`ropod_common`](https://github.com/ropod-project/ropod_common)
+* [`fmlib`](https://github.com/kelo-robotics/fmlib)
 
 ## Design principles and assumptions
 
@@ -126,13 +126,13 @@ planner = LAMAInterface('ropod_kb', domain_file, planner_cmd, plan_file_path, de
 # creating a task request
 task_request = TaskRequest()
 task_request.load_id = 'mobidik_123'
-task_request.delivery_pose.id = 'BRSU_L0_C0'
+task_request.delivery_location = 'BRSU_L0_C0'
 
 robot_name = 'frank'
 
 # creating the list of task goals
 task_goals = [('load_at', [('load', task_request.load_id),
-                           ('loc', task_request.delivery_pose.id)]),
+                           ('loc', task_request.delivery_location)]),
               ('empty_gripper', [('bot', robot_name)])]
 
 # requesting a plan
@@ -168,7 +168,7 @@ An abstract class containing the following fields:
 * `debug`: A Boolean indicating whether to run the planner in debug mode (thus providing more detailed debugging output)
 
 The following abstract methods are declared in the interface:
-* `plan`: Returns a list of `ropod.structs.action.Action` objects representing a task plan for a task request and robot
+* `plan`: Returns a list of `task_planner.action_models.Action` objects representing a task plan for a task request and robot
 * `generate_problem_file`: Generates a PDDL problem file given a list of predicate and fluent assertions and task goals
 * `parse_plan`: Parses a generated plan from a file. Returns a tuple of type Tuple[bool, list], the first entry of which indicates whether the plan was found and the second of which is a list of `ropod.structs.action.Action` objects (an empty list if no plan was found)
 * `process_action_str`: Converts an action string read from a plan file to a `ropod.structs.action.Action` object

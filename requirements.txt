@@ -1,4 +1,4 @@
 pymongo
 numpy
 PyYAML
-git+https://github.com/ropod-project/ropod_common.git#egg=ropod_common
+git+https://github.com/kelo-robotics/fmlib.git@develop

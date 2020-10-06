@@ -1,6 +1,35 @@
 import uuid
-from ropod.structs.action import Action
-from ropod.structs.area import Area
+
+
+class Action(object):
+    def __init__(self):
+        self.id = ''
+        self.type = ''
+
+        # fields for goto actions
+        self.areas = list()
+        self.subareas = list()
+
+        # fields for elevator request actions
+        self.start_floor = -1
+        self.goal_floor = -1
+
+        # fields for entering/exiting elevators
+        self.level = -1
+        self.elevator_id = -1
+
+        # pending, in progress, etc.
+        self.execution_status = ''
+        self.eta = -1.
+
+
+class Area(object):
+    def __init__(self):
+        self.id = None
+        self.name = None
+        self.sub_areas = list()
+        self.floor_number = None
+        self.type = None
 
 
 class ActionModelLibrary(object):

@@ -5,7 +5,7 @@ import unittest
 import pymongo as pm
 import yaml
 
-from ropod.structs.task import TaskRequest
+from fmlib.models.requests import TransportationRequest as TaskRequest
 from task_planner.lama_interface import LAMAInterface
 
 def get_planner_config(config_file_path):
@@ -57,10 +57,10 @@ class LamaPlannerTest(unittest.TestCase):
 
         task_request = TaskRequest()
         task_request.load_id = 'mobidik'
-        task_request.delivery_pose.id = 'DELIVERY_LOCATION'
+        task_request.delivery_location = 'DELIVERY_LOCATION'
 
         task_goals = [('load_at', [('load', task_request.load_id),
-                                   ('loc', task_request.delivery_pose.id)]),
+                                   ('loc', task_request.delivery_location)]),
                       ('empty_gripper', [('bot', 'frank')])]
         plan_found, action_strings = self.planner_interface.plan(task_request, 'frank', task_goals)
         plan = self.planner_interface.plan_to_action_models(action_strings)
@@ -106,10 +106,10 @@ class LamaPlannerTest(unittest.TestCase):
 
         task_request = TaskRequest()
         task_request.load_id = 'mobidik'
-        task_request.delivery_pose.id = 'DELIVERY_LOCATION'
+        task_request.delivery_location = 'DELIVERY_LOCATION'
 
         task_goals = [('load_at', [('load', task_request.load_id),
-                                   ('loc', task_request.delivery_pose.id)]),
+                                   ('loc', task_request.delivery_location)]),
                       ('empty_gripper', [('bot', 'frank')])]
 
         plan_found, action_strings = self.planner_interface.plan(task_request, 'frank', task_goals)
@@ -171,10 +171,10 @@ class LamaPlannerTest(unittest.TestCase):
 
         task_request = TaskRequest()
         task_request.load_id = 'mobidik'
-        task_request.delivery_pose.id = 'DELIVERY_LOCATION'
+        task_request.delivery_location = 'DELIVERY_LOCATION'
 
         task_goals = [('load_at', [('load', task_request.load_id),
-                                   ('loc', task_request.delivery_pose.id)]),
+                                   ('loc', task_request.delivery_location)]),
                       ('empty_gripper', [('bot', 'frank')])]
         plan_found, action_strings = self.planner_interface.plan(task_request, 'frank', task_goals)
         plan = self.planner_interface.plan_to_action_models(action_strings)
@@ -222,10 +222,10 @@ class LamaPlannerTest(unittest.TestCase):
 
         task_request = TaskRequest()
         task_request.load_id = 'mobidik'
-        task_request.delivery_pose.id = 'DELIVERY_LOCATION'
+        task_request.delivery_location = 'DELIVERY_LOCATION'
 
         task_goals = [('load_at', [('load', task_request.load_id),
-                                   ('loc', task_request.delivery_pose.id)]),
+                                   ('loc', task_request.delivery_location)]),
                       ('empty_gripper', [('bot', 'frank')])]
         plan_found, action_strings = self.planner_interface.plan(task_request, 'frank', task_goals)
         plan = self.planner_interface.plan_to_action_models(action_strings)
@@ -290,10 +290,10 @@ class LamaPlannerTest(unittest.TestCase):
 
         task_request = TaskRequest()
         task_request.load_id = 'mobidik'
-        task_request.delivery_pose.id = 'DELIVERY_LOCATION'
+        task_request.delivery_location = 'DELIVERY_LOCATION'
 
         task_goals = [('load_at', [('load', task_request.load_id),
-                                   ('loc', task_request.delivery_pose.id)]),
+                                   ('loc', task_request.delivery_location)]),
                       ('empty_gripper', [('bot', 'frank')])]
         plan_found, action_strings = self.planner_interface.plan(task_request, 'frank', task_goals)
         plan = self.planner_interface.plan_to_action_models(action_strings)
