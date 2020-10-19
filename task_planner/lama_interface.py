@@ -1,19 +1,20 @@
+import logging
+import logging
 import os
+import subprocess
+import uuid
 from os import listdir
 from os.path import join
 from typing import Tuple, Sequence
-import uuid
-import subprocess
+
 import numpy as np
-import logging
 
 from task_planner.action_models import Action
-from task_planner.planner_interface import TaskPlannerInterface
-from task_planner.knowledge_base_interface import Predicate
 from task_planner.action_models import ActionModelLibrary
-from task_planner.knowledge_models import PDDLPredicateLibrary, PDDLFluentLibrary,\
-                                          PDDLNumericFluentLibrary
-import os
+from task_planner.knowledge_base_interface import Predicate
+from task_planner.knowledge_models import PDDLPredicateLibrary, PDDLFluentLibrary, \
+    PDDLNumericFluentLibrary
+from task_planner.planner_interface import TaskPlannerInterface
 
 
 class LAMAInterface(TaskPlannerInterface):
