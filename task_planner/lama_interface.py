@@ -13,13 +13,23 @@ from task_planner.knowledge_base_interface import Predicate
 from task_planner.action_models import ActionModelLibrary
 from task_planner.knowledge_models import PDDLPredicateLibrary, PDDLFluentLibrary,\
                                           PDDLNumericFluentLibrary
+import os
 
 
 class LAMAInterface(TaskPlannerInterface):
     _plan_file_name = 'plan.txt'
 
     def __init__(self, kb_database_name, domain_file,
-                 planner_cmd, plan_file_path, debug=False):
+                 planner_cmd, plan_file_path=None, debug=False):
+
+        dir_path = os.path.dirname(os.path.realpath(__file__))
+
+        planner_path = dir_path + "/bin/fast-downward/fast-downward.py"
+        planner_cmd = planner_path + " " + planner_cmd
+
+        if plan_file_path is None:
+            plan_file_path = dir_path + "/plans"
+
         super(LAMAInterface, self).__init__(kb_database_name, domain_file,
                                             planner_cmd, plan_file_path,
                                             debug)
