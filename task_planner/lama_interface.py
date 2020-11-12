@@ -15,6 +15,7 @@ from task_planner.knowledge_base_interface import Predicate
 from task_planner.knowledge_models import PDDLPredicateLibrary, PDDLFluentLibrary, \
     PDDLNumericFluentLibrary
 from task_planner.planner_interface import TaskPlannerInterface
+from ropod.utils.logging.counter import ContextFilter
 
 
 class LAMAInterface(TaskPlannerInterface):
@@ -35,6 +36,7 @@ class LAMAInterface(TaskPlannerInterface):
                                             planner_cmd, plan_file_path,
                                             debug)
         self.logger = logging.getLogger('task.planner')
+        self.logger.addFilter(ContextFilter())
 
     def plan(self, task_request, robot: str, task_goals: list=None):
         '''

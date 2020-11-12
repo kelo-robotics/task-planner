@@ -1,7 +1,9 @@
+import logging
 from typing import Tuple
+
 import pymongo as pm
 from bson.objectid import ObjectId
-import logging
+from ropod.utils.logging.counter import ContextFilter
 
 
 class AssertionTypes(object):
@@ -278,6 +280,7 @@ class KnowledgeBaseInterface(object):
         self.__kb_collection_name = 'knowledge_base'
         self.__goal_collection_name = 'goals'
         self.logger = logging.getLogger('task.planner.kb.interface')
+        self.logger.addFilter(ContextFilter())
 
     def get_predicate_names(self) -> list:
         '''Returns a list of all stored predicate names in the knowledge base.
