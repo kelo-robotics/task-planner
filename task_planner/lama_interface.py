@@ -21,7 +21,7 @@ from ropod.utils.logging.counter import ContextFilter
 class LAMAInterface(TaskPlannerInterface):
     _plan_file_name = 'plan.txt'
 
-    def __init__(self, kb_database_name, domain_file,
+    def __init__(self, kb_database_name, kb_database_port, domain_file,
                  planner_cmd, plan_file_path=None, debug=False):
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
@@ -32,7 +32,7 @@ class LAMAInterface(TaskPlannerInterface):
         if plan_file_path is None:
             plan_file_path = dir_path + "/plans"
 
-        super(LAMAInterface, self).__init__(kb_database_name, domain_file,
+        super(LAMAInterface, self).__init__(kb_database_name, kb_database_port, domain_file,
                                             planner_cmd, plan_file_path,
                                             debug)
         self.logger = logging.getLogger('task.planner')
