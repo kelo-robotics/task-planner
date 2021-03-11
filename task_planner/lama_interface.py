@@ -22,7 +22,7 @@ class LAMAInterface(TaskPlannerInterface):
     _plan_file_name = 'plan.txt'
 
     def __init__(self, kb_database_name, kb_database_port, domain_file,
-                 planner_cmd, plan_file_path=None, debug=False):
+                 planner_cmd, plan_file_path=None, debug=False, **kwargs):
 
         dir_path = os.path.dirname(os.path.realpath(__file__))
 
@@ -34,7 +34,7 @@ class LAMAInterface(TaskPlannerInterface):
 
         super(LAMAInterface, self).__init__(kb_database_name, kb_database_port, domain_file,
                                             planner_cmd, plan_file_path,
-                                            debug)
+                                            debug, **kwargs)
         self.logger = logging.getLogger('task.planner')
         self.logger.addFilter(ContextFilter())
 

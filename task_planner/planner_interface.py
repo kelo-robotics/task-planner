@@ -6,8 +6,8 @@ from task_planner.knowledge_base_interface import KnowledgeBaseInterface
 
 
 class TaskPlannerInterface(object):
-    def __init__(self, kb_database_name, kb_database_port, domain_file, planner_cmd, plan_file_path, debug=False):
-        self.kb_interface = KnowledgeBaseInterface(kb_database_name, kb_database_port)
+    def __init__(self, kb_database_name, kb_database_port, domain_file, planner_cmd, plan_file_path, debug=False, **kwargs):
+        self.kb_interface = KnowledgeBaseInterface(kb_database_name, kb_database_port, **kwargs)
         self.domain_file = domain_file
         self.domain_name = self.__get_domain_name(self.domain_file)
         self.planner_cmd = planner_cmd.replace('DOMAIN', self.domain_file)

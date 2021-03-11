@@ -275,9 +275,11 @@ class KnowledgeBaseInterface(object):
     @contact aleksandar.mitrevski@h-brs.de
 
     '''
-    def __init__(self, __kb_database_name='robot_store', __port=27017):
+    def __init__(self, __kb_database_name='robot_store', __port=27017, **kwargs):
         self.__kb_database_name = __kb_database_name
         self.__port = __port
+        self.__user = kwargs.get("kb_database_user")
+        self.__pwd = kwargs.get("kb_database_pwd")
         self.__kb_collection_name = 'knowledge_base'
         self.__goal_collection_name = 'goals'
         self.logger = logging.getLogger('task.planner.kb.interface')
@@ -558,7 +560,13 @@ class KnowledgeBaseInterface(object):
         @param collection_name: str -- name of a MongoDB collection
 
         '''
-        client = pm.MongoClient(port=self.__port)
+        if self.__user:
+            # Connect with authentication
+            connection_str = "mongodb://%s:%s@%s:%s/%s?authSource=admin" % (self.__user, self.__pwd, "localhost",
+                                                                            self.__port, self.__kb_database_name)
+        else:
+            connection_str = "mongodb://%s:%s/%s" % ("localhost", self.__port, self.__kb_database_name)
+        client = pm.MongoClient(connection_str)
         db = client[self.__kb_database_name]
         collection = db[collection_name]
         return collection
