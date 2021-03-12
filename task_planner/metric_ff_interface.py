@@ -21,7 +21,7 @@ class MetricFFInterface(TaskPlannerInterface):
         super(MetricFFInterface, self).__init__(kb_database_name, domain_file,
                                                 planner_cmd, plan_file_path,
                                                 debug)
-        self.logger = logging.getLogger('task.planner')
+        self.logger = logging.getLogger('task_planner')
 
     def plan(self, task_request: TaskRequest, robot: str, task_goals: list=None):
         '''

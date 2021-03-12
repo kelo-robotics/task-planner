@@ -35,7 +35,7 @@ class LAMAInterface(TaskPlannerInterface):
         super(LAMAInterface, self).__init__(kb_database_name, kb_database_port, domain_file,
                                             planner_cmd, plan_file_path,
                                             debug, **kwargs)
-        self.logger = logging.getLogger('task.planner')
+        self.logger = logging.getLogger('task_planner')
         self.logger.addFilter(ContextFilter())
 
     def plan(self, task_request, robot: str, task_goals: list=None):

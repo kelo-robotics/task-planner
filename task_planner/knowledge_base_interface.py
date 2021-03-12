@@ -282,7 +282,7 @@ class KnowledgeBaseInterface(object):
         self.__pwd = kwargs.get("kb_database_pwd")
         self.__kb_collection_name = 'knowledge_base'
         self.__goal_collection_name = 'goals'
-        self.logger = logging.getLogger('task.planner.kb.interface')
+        self.logger = logging.getLogger('task_planner.kb_interface')
         self.logger.addFilter(ContextFilter())
 
     def get_predicate_names(self) -> list:
